@@ -13,18 +13,24 @@
           });
           dateFormatter.format(data, 0);
 
-
           var options = {
-            title: '% of life together',
+            title: '% of life together over time',
             curveType: 'function',
-            legend: {position: 'none'},
+            colors: ['#3062cd', '#2dc795'],
             vAxis: { format: '#\'%\''},
             hAxis: {
+              ticks: [
+                new Date(2005, 1, 1), new Date(2015, 1, 1), new Date(2025, 1, 1),
+                new Date(2035, 1, 1), new Date(2045, 1, 1), new Date(2055, 1, 1),
+                new Date(2065, 1, 1), new Date(2075, 1, 1), new Date(2085, 1, 1),
+                new Date(2095, 1, 1), new Date(2105, 1, 1)
+              ],
+              title: 'years',
               format: 'yyyy',
               viewWindow: {
-                  min: (new Date("2005-01-01"))
-
-              }
+                  min: (new Date(2005, 1, 1))
+              },
+              gridlines: {color: 'transparent'},
             }
           };
 
@@ -51,7 +57,7 @@
       function generatePoints(startDate, now, endDate){
           var pointInTime = startDate
 
-          var data = [['day', 'percent', 'percent']]
+          var data = [['day', 'percentage', 'future percentage']]
           while(pointInTime < endDate){
               var newPointInTime = pointInTime;
 
